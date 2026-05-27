@@ -1,9 +1,9 @@
 <!DOCTYPE html>
-<html lang="id">
+<html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Website Sedang Maintenance</title>
+    <title>Under Maintenance | We'll Be Back</title>
     <style>
         * {
             margin: 0;
@@ -13,133 +13,217 @@
 
         body {
             font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-            background: linear-gradient(135deg, #0f0c29, #302b63, #24243e);
+            background: #0a0a0f;
             min-height: 100vh;
             display: flex;
             align-items: center;
             justify-content: center;
             overflow: hidden;
+            position: relative;
+        }
+
+        /* Animated gradient background */
+        .bg-gradient {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: radial-gradient(ellipse at 20% 50%, rgba(120, 0, 255, 0.15) 0%, transparent 50%),
+                        radial-gradient(ellipse at 80% 20%, rgba(255, 0, 128, 0.1) 0%, transparent 50%),
+                        radial-gradient(ellipse at 50% 80%, rgba(0, 200, 255, 0.08) 0%, transparent 50%);
+            animation: bgShift 8s ease-in-out infinite alternate;
+        }
+
+        @keyframes bgShift {
+            0% { transform: scale(1) rotate(0deg); }
+            100% { transform: scale(1.1) rotate(2deg); }
+        }
+
+        /* Grid overlay */
+        .grid-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-image: 
+                linear-gradient(rgba(255,255,255,0.02) 1px, transparent 1px),
+                linear-gradient(90deg, rgba(255,255,255,0.02) 1px, transparent 1px);
+            background-size: 60px 60px;
+            pointer-events: none;
         }
 
         .container {
             text-align: center;
             padding: 40px;
-            max-width: 600px;
+            max-width: 700px;
             width: 90%;
+            position: relative;
+            z-index: 10;
         }
 
-        .icon {
-            font-size: 80px;
-            margin-bottom: 30px;
-            animation: bounce 2s infinite;
+        /* Glitch effect for the emoji */
+        .emoji-container {
+            font-size: 100px;
+            margin-bottom: 20px;
+            position: relative;
+            display: inline-block;
+            animation: float 3s ease-in-out infinite;
         }
 
-        @keyframes bounce {
-            0%, 20%, 50%, 80%, 100% {
-                transform: translateY(0);
-            }
-            40% {
-                transform: translateY(-20px);
-            }
-            60% {
-                transform: translateY(-10px);
-            }
+        @keyframes float {
+            0%, 100% { transform: translateY(0px); }
+            50% { transform: translateY(-15px); }
         }
 
+        /* Glowing title */
         h1 {
             color: #ffffff;
-            font-size: 2.5rem;
-            margin-bottom: 15px;
-            text-shadow: 0 2px 10px rgba(0,0,0,0.3);
+            font-size: 3rem;
+            margin-bottom: 10px;
+            font-weight: 800;
+            letter-spacing: -1px;
+            text-shadow: 0 0 40px rgba(120, 0, 255, 0.5);
         }
 
-        p {
-            color: #b8b8d4;
-            font-size: 1.1rem;
-            line-height: 1.8;
+        .subtitle {
+            color: #ff6b9d;
+            font-size: 1.3rem;
+            font-weight: 600;
             margin-bottom: 30px;
+            font-style: italic;
+        }
+
+        .roast {
+            background: rgba(255, 255, 255, 0.03);
+            border: 1px solid rgba(255, 255, 255, 0.08);
+            border-radius: 16px;
+            padding: 25px 30px;
+            margin-bottom: 35px;
+            backdrop-filter: blur(10px);
+        }
+
+        .roast p {
+            color: #a0a0b8;
+            font-size: 1.05rem;
+            line-height: 1.9;
+        }
+
+        .roast .highlight {
+            color: #c084fc;
+            font-weight: 600;
+        }
+
+        .roast .sassy {
+            color: #ff6b9d;
+            font-weight: 600;
+        }
+
+        /* Animated status bar */
+        .status-bar {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 12px;
+            margin-bottom: 35px;
+        }
+
+        .status-dot {
+            width: 10px;
+            height: 10px;
+            background: #ff6b9d;
+            border-radius: 50%;
+            animation: pulse 1.5s ease-in-out infinite;
+            box-shadow: 0 0 15px rgba(255, 107, 157, 0.6);
+        }
+
+        @keyframes pulse {
+            0%, 100% { opacity: 1; transform: scale(1); }
+            50% { opacity: 0.5; transform: scale(0.8); }
+        }
+
+        .status-text {
+            color: #ff6b9d;
+            font-size: 0.85rem;
+            text-transform: uppercase;
+            letter-spacing: 3px;
+            font-weight: 600;
+        }
+
+        /* Progress section */
+        .progress-container {
+            margin-bottom: 35px;
+        }
+
+        .progress-label {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 8px;
+            color: #666;
+            font-size: 0.8rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
         }
 
         .progress-bar {
             width: 100%;
-            height: 6px;
-            background: rgba(255,255,255,0.1);
-            border-radius: 3px;
+            height: 4px;
+            background: rgba(255,255,255,0.05);
+            border-radius: 2px;
             overflow: hidden;
-            margin-bottom: 30px;
         }
 
         .progress-fill {
             height: 100%;
-            width: 60%;
-            background: linear-gradient(90deg, #667eea, #764ba2);
-            border-radius: 3px;
-            animation: loading 2s ease-in-out infinite;
-        }
-
-        @keyframes loading {
-            0% { transform: translateX(-100%); }
-            100% { transform: translateX(200%); }
-        }
-
-        .gears {
-            display: flex;
-            justify-content: center;
-            gap: 5px;
-            margin-bottom: 30px;
-        }
-
-        .gear {
-            width: 50px;
-            height: 50px;
-            animation: spin 4s linear infinite;
-        }
-
-        .gear:nth-child(2) {
-            animation: spin-reverse 4s linear infinite;
-            margin-top: 15px;
-        }
-
-        @keyframes spin {
-            from { transform: rotate(0deg); }
-            to { transform: rotate(360deg); }
-        }
-
-        @keyframes spin-reverse {
-            from { transform: rotate(0deg); }
-            to { transform: rotate(-360deg); }
-        }
-
-        .gear svg {
-            fill: #667eea;
             width: 100%;
-            height: 100%;
+            background: linear-gradient(90deg, #7c3aed, #ff6b9d, #7c3aed);
+            background-size: 200% 100%;
+            border-radius: 2px;
+            animation: shimmer 2s linear infinite;
         }
 
-        .countdown {
-            color: #667eea;
+        @keyframes shimmer {
+            0% { background-position: -200% 0; }
+            100% { background-position: 200% 0; }
+        }
+
+        /* Fun quotes rotation */
+        .quotes {
+            margin-bottom: 30px;
+            min-height: 60px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .quote {
+            color: #555;
             font-size: 0.9rem;
+            font-style: italic;
+            opacity: 0;
+            position: absolute;
+            transition: opacity 0.5s ease;
+        }
+
+        .quote.active {
+            opacity: 1;
+            position: relative;
+        }
+
+        /* Footer sass */
+        .footer {
+            color: #333;
+            font-size: 0.8rem;
             margin-top: 20px;
         }
 
-        .dots {
-            display: inline-block;
+        .footer a {
+            color: #7c3aed;
+            text-decoration: none;
         }
 
-        .dots span {
-            animation: blink 1.4s infinite both;
-            font-size: 1.5rem;
-            color: #667eea;
-        }
-
-        .dots span:nth-child(2) { animation-delay: 0.2s; }
-        .dots span:nth-child(3) { animation-delay: 0.4s; }
-
-        @keyframes blink {
-            0%, 80%, 100% { opacity: 0; }
-            40% { opacity: 1; }
-        }
-
+        /* Floating particles */
         .particles {
             position: fixed;
             top: 0;
@@ -147,87 +231,172 @@
             width: 100%;
             height: 100%;
             pointer-events: none;
-            z-index: -1;
+            z-index: 1;
         }
 
         .particle {
             position: absolute;
-            width: 4px;
-            height: 4px;
-            background: rgba(102, 126, 234, 0.3);
             border-radius: 50%;
-            animation: float 15s infinite;
+            animation: rise 20s infinite;
+            opacity: 0;
         }
 
-        @keyframes float {
-            0%, 100% {
-                transform: translateY(100vh) rotate(0deg);
+        @keyframes rise {
+            0% {
+                transform: translateY(100vh) scale(0);
                 opacity: 0;
             }
             10% {
                 opacity: 1;
             }
             90% {
-                opacity: 0.5;
+                opacity: 0.3;
             }
             100% {
-                transform: translateY(-100vh) rotate(720deg);
+                transform: translateY(-100vh) scale(1);
                 opacity: 0;
             }
+        }
+
+        /* Glitch text effect */
+        .glitch {
+            position: relative;
+        }
+
+        .glitch::before,
+        .glitch::after {
+            content: attr(data-text);
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+        }
+
+        .glitch::before {
+            animation: glitch-1 2s infinite linear alternate-reverse;
+            clip-path: polygon(0 0, 100% 0, 100% 35%, 0 35%);
+            color: #ff6b9d;
+        }
+
+        .glitch::after {
+            animation: glitch-2 2s infinite linear alternate-reverse;
+            clip-path: polygon(0 65%, 100% 65%, 100% 100%, 0 100%);
+            color: #00d4ff;
+        }
+
+        @keyframes glitch-1 {
+            0%, 100% { transform: translateX(0); }
+            20% { transform: translateX(-2px); }
+            40% { transform: translateX(2px); }
+            60% { transform: translateX(-1px); }
+            80% { transform: translateX(1px); }
+        }
+
+        @keyframes glitch-2 {
+            0%, 100% { transform: translateX(0); }
+            20% { transform: translateX(2px); }
+            40% { transform: translateX(-2px); }
+            60% { transform: translateX(1px); }
+            80% { transform: translateX(-1px); }
+        }
+
+        /* Responsive */
+        @media (max-width: 600px) {
+            h1 { font-size: 2rem; }
+            .subtitle { font-size: 1rem; }
+            .emoji-container { font-size: 70px; }
+            .roast { padding: 20px; }
         }
     </style>
 </head>
 <body>
+    <div class="bg-gradient"></div>
+    <div class="grid-overlay"></div>
     <div class="particles" id="particles"></div>
 
     <div class="container">
-        <div class="gears">
-            <div class="gear">
-                <svg viewBox="0 0 100 100">
-                    <path d="M97.6,55.7V44.3l-13.6-2.9c-0.8-3.3-2.1-6.4-3.7-9.3l7.8-11.2l-8.1-8.1L68.8,20.6c-2.9-1.6-6-2.9-9.3-3.7L56.6,3.3H44.3 l-2.9,13.6c-3.3,0.8-6.4,2.1-9.3,3.7L20.9,12.8l-8.1,8.1l7.8,11.2c-1.6,2.9-2.9,6-3.7,9.3L3.3,44.3v11.4l13.6,2.9 c0.8,3.3,2.1,6.4,3.7,9.3l-7.8,11.2l8.1,8.1l11.2-7.8c2.9,1.6,6,2.9,9.3,3.7l2.9,13.6h11.4l2.9-13.6c3.3-0.8,6.4-2.1,9.3-3.7 l11.2,7.8l8.1-8.1l-7.8-11.2c1.6-2.9,2.9-6,3.7-9.3L97.6,55.7z M50,65c-8.3,0-15-6.7-15-15c0-8.3,6.7-15,15-15s15,6.7,15,15 C65,58.3,58.3,65,50,65z"/>
-                </svg>
+        <div class="emoji-container">🚧</div>
+
+        <h1 class="glitch" data-text="We're Down.">We're Down.</h1>
+        <p class="subtitle">...but at least we warned you, right? 😏</p>
+
+        <div class="status-bar">
+            <div class="status-dot"></div>
+            <span class="status-text">System Offline</span>
+        </div>
+
+        <div class="roast">
+            <p>
+                Look, we know you were <span class="highlight">super excited</span> to visit this page.
+                <br>But our hamsters powering the server needed a <span class="sassy">coffee break</span>. ☕
+                <br><br>
+                We're upgrading things behind the scenes.
+                <br>Try again later — or don't. <span class="highlight">We'll be here either way.</span> 💅
+            </p>
+        </div>
+
+        <div class="progress-container">
+            <div class="progress-label">
+                <span>Progress</span>
+                <span>Loading vibes...</span>
             </div>
-            <div class="gear">
-                <svg viewBox="0 0 100 100">
-                    <path d="M97.6,55.7V44.3l-13.6-2.9c-0.8-3.3-2.1-6.4-3.7-9.3l7.8-11.2l-8.1-8.1L68.8,20.6c-2.9-1.6-6-2.9-9.3-3.7L56.6,3.3H44.3 l-2.9,13.6c-3.3,0.8-6.4,2.1-9.3,3.7L20.9,12.8l-8.1,8.1l7.8,11.2c-1.6,2.9-2.9,6-3.7,9.3L3.3,44.3v11.4l13.6,2.9 c0.8,3.3,2.1,6.4,3.7,9.3l-7.8,11.2l8.1,8.1l11.2-7.8c2.9,1.6,6,2.9,9.3,3.7l2.9,13.6h11.4l2.9-13.6c3.3-0.8,6.4-2.1,9.3-3.7 l11.2,7.8l8.1-8.1l-7.8-11.2c1.6-2.9,2.9-6,3.7-9.3L97.6,55.7z M50,65c-8.3,0-15-6.7-15-15c0-8.3,6.7-15,15-15s15,6.7,15,15 C65,58.3,58.3,65,50,65z"/>
-                </svg>
+            <div class="progress-bar">
+                <div class="progress-fill"></div>
             </div>
         </div>
 
-        <h1>Sedang Maintenance</h1>
-
-        <p>
-            Website kami sedang dalam perbaikan untuk memberikan pengalaman yang lebih baik.
-            <br>Kami akan segera kembali!
-        </p>
-
-        <div class="progress-bar">
-            <div class="progress-fill"></div>
+        <div class="quotes">
+            <p class="quote active" id="quote">Loading witty comeback...</p>
         </div>
 
-        <p style="font-size: 0.95rem;">
-            Sedang bekerja keras
-            <span class="dots">
-                <span>.</span><span>.</span><span>.</span>
-            </span>
-        </p>
-
-        <div class="countdown">
-            Terima kasih atas kesabaran Anda
+        <div class="footer">
+            <p>In the meantime, maybe go touch some grass? 🌱</p>
         </div>
     </div>
 
     <script>
-        // Create floating particles
+        // Floating particles
         const particlesContainer = document.getElementById('particles');
-        for (let i = 0; i < 20; i++) {
+        const colors = ['rgba(124, 58, 237, 0.4)', 'rgba(255, 107, 157, 0.3)', 'rgba(0, 212, 255, 0.2)'];
+
+        for (let i = 0; i < 30; i++) {
             const particle = document.createElement('div');
             particle.classList.add('particle');
             particle.style.left = Math.random() * 100 + '%';
-            particle.style.animationDelay = Math.random() * 15 + 's';
-            particle.style.animationDuration = (Math.random() * 10 + 10) + 's';
+            particle.style.width = (Math.random() * 4 + 2) + 'px';
+            particle.style.height = particle.style.width;
+            particle.style.background = colors[Math.floor(Math.random() * colors.length)];
+            particle.style.animationDelay = Math.random() * 20 + 's';
+            particle.style.animationDuration = (Math.random() * 15 + 10) + 's';
             particlesContainer.appendChild(particle);
         }
+
+        // Rotating sassy quotes
+        const quotes = [
+            "\"Have you tried turning it off and on again?\" — Every IT guy ever 🙄",
+            "Error 503: Server went to grab boba. BRB. 🧋",
+            "Our developers are fixing bugs... or creating new ones. Who knows? 🤷",
+            "This page is more unavailable than your crush. 💔",
+            "We're not broken, we're just ✨under construction✨",
+            "Plot twist: the maintenance IS the content. 🎭",
+            "If you refresh 100 times, nothing will change. Trust us. 😂",
+            "Our server said 'I need a mental health day.' We respect that. 🧘",
+            "You could've spent this time learning to code... just saying. 👀",
+            "Roses are red, servers are blue, this site is down, nothing you can do. 🌹"
+        ];
+
+        let currentQuote = 0;
+        const quoteEl = document.getElementById('quote');
+
+        setInterval(() => {
+            quoteEl.classList.remove('active');
+            setTimeout(() => {
+                currentQuote = (currentQuote + 1) % quotes.length;
+                quoteEl.textContent = quotes[currentQuote];
+                quoteEl.classList.add('active');
+            }, 500);
+        }, 4000);
     </script>
 </body>
 </html>

@@ -1,9 +1,9 @@
 <!DOCTYPE html>
-<html lang="id">
+<html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Website Sedang Maintenance</title>
+    <title>Nice Try 😏 | Under Maintenance</title>
     <style>
         * {
             margin: 0;
@@ -13,109 +13,202 @@
 
         body {
             font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-            background: linear-gradient(135deg, #0f0c29, #302b63, #24243e);
+            background: #0a0a0f;
             min-height: 100vh;
             display: flex;
             align-items: center;
             justify-content: center;
             overflow: hidden;
+            position: relative;
+        }
+
+        .bg-gradient {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: radial-gradient(ellipse at 20% 50%, rgba(255, 0, 80, 0.12) 0%, transparent 50%),
+                        radial-gradient(ellipse at 80% 20%, rgba(120, 0, 255, 0.1) 0%, transparent 50%),
+                        radial-gradient(ellipse at 50% 80%, rgba(255, 200, 0, 0.06) 0%, transparent 50%);
+            animation: bgShift 8s ease-in-out infinite alternate;
+        }
+
+        @keyframes bgShift {
+            0% { transform: scale(1) rotate(0deg); }
+            100% { transform: scale(1.1) rotate(-2deg); }
+        }
+
+        .grid-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-image: 
+                linear-gradient(rgba(255,255,255,0.02) 1px, transparent 1px),
+                linear-gradient(90deg, rgba(255,255,255,0.02) 1px, transparent 1px);
+            background-size: 60px 60px;
+            pointer-events: none;
         }
 
         .container {
             text-align: center;
             padding: 40px;
-            max-width: 600px;
+            max-width: 700px;
             width: 90%;
+            position: relative;
+            z-index: 10;
         }
 
-        .gears {
-            display: flex;
-            justify-content: center;
-            gap: 5px;
-            margin-bottom: 30px;
+        .emoji-container {
+            font-size: 100px;
+            margin-bottom: 20px;
+            display: inline-block;
+            animation: shake 0.5s ease-in-out infinite alternate;
         }
 
-        .gear {
-            width: 50px;
-            height: 50px;
-            animation: spin 4s linear infinite;
-        }
-
-        .gear:nth-child(2) {
-            animation: spin-reverse 4s linear infinite;
-            margin-top: 15px;
-        }
-
-        @keyframes spin {
-            from { transform: rotate(0deg); }
-            to { transform: rotate(360deg); }
-        }
-
-        @keyframes spin-reverse {
-            from { transform: rotate(0deg); }
-            to { transform: rotate(-360deg); }
-        }
-
-        .gear svg {
-            fill: #667eea;
-            width: 100%;
-            height: 100%;
+        @keyframes shake {
+            0% { transform: rotate(-5deg); }
+            100% { transform: rotate(5deg); }
         }
 
         h1 {
             color: #ffffff;
-            font-size: 2.5rem;
-            margin-bottom: 15px;
-            text-shadow: 0 2px 10px rgba(0,0,0,0.3);
+            font-size: 3rem;
+            margin-bottom: 10px;
+            font-weight: 800;
+            letter-spacing: -1px;
+            text-shadow: 0 0 40px rgba(255, 0, 80, 0.5);
         }
 
-        p {
-            color: #b8b8d4;
-            font-size: 1.1rem;
-            line-height: 1.8;
+        .subtitle {
+            color: #fbbf24;
+            font-size: 1.3rem;
+            font-weight: 600;
             margin-bottom: 30px;
+        }
+
+        .status-bar {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 12px;
+            margin-bottom: 35px;
+        }
+
+        .status-dot {
+            width: 10px;
+            height: 10px;
+            background: #ef4444;
+            border-radius: 50%;
+            animation: pulse 1s ease-in-out infinite;
+            box-shadow: 0 0 15px rgba(239, 68, 68, 0.6);
+        }
+
+        @keyframes pulse {
+            0%, 100% { opacity: 1; transform: scale(1); }
+            50% { opacity: 0.4; transform: scale(0.7); }
+        }
+
+        .status-text {
+            color: #ef4444;
+            font-size: 0.85rem;
+            text-transform: uppercase;
+            letter-spacing: 3px;
+            font-weight: 600;
+        }
+
+        .roast {
+            background: rgba(255, 255, 255, 0.03);
+            border: 1px solid rgba(255, 255, 255, 0.08);
+            border-radius: 16px;
+            padding: 25px 30px;
+            margin-bottom: 35px;
+            backdrop-filter: blur(10px);
+        }
+
+        .roast p {
+            color: #a0a0b8;
+            font-size: 1.05rem;
+            line-height: 1.9;
+        }
+
+        .roast .highlight {
+            color: #c084fc;
+            font-weight: 600;
+        }
+
+        .roast .sassy {
+            color: #fbbf24;
+            font-weight: 600;
+        }
+
+        .roast .red {
+            color: #ef4444;
+            font-weight: 600;
+        }
+
+        .url-display {
+            background: rgba(255, 255, 255, 0.05);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: 8px;
+            padding: 12px 20px;
+            margin: 20px 0;
+            display: inline-block;
+        }
+
+        .url-display code {
+            color: #ef4444;
+            font-family: 'Courier New', monospace;
+            font-size: 0.95rem;
         }
 
         .progress-bar {
             width: 100%;
-            height: 6px;
-            background: rgba(255,255,255,0.1);
-            border-radius: 3px;
+            height: 4px;
+            background: rgba(255,255,255,0.05);
+            border-radius: 2px;
             overflow: hidden;
-            margin-bottom: 30px;
+            margin-bottom: 35px;
         }
 
         .progress-fill {
             height: 100%;
-            width: 60%;
-            background: linear-gradient(90deg, #667eea, #764ba2);
-            border-radius: 3px;
-            animation: loading 2s ease-in-out infinite;
+            width: 100%;
+            background: linear-gradient(90deg, #ef4444, #fbbf24, #ef4444);
+            background-size: 200% 100%;
+            border-radius: 2px;
+            animation: shimmer 1.5s linear infinite;
         }
 
-        @keyframes loading {
-            0% { transform: translateX(-100%); }
-            100% { transform: translateX(200%); }
+        @keyframes shimmer {
+            0% { background-position: -200% 0; }
+            100% { background-position: 200% 0; }
         }
 
-        .dots span {
-            animation: blink 1.4s infinite both;
-            font-size: 1.5rem;
-            color: #667eea;
-        }
-
-        .dots span:nth-child(2) { animation-delay: 0.2s; }
-        .dots span:nth-child(3) { animation-delay: 0.4s; }
-
-        @keyframes blink {
-            0%, 80%, 100% { opacity: 0; }
-            40% { opacity: 1; }
-        }
-
-        .countdown {
-            color: #667eea;
+        .back-btn {
+            display: inline-block;
+            padding: 12px 30px;
+            background: linear-gradient(135deg, #7c3aed, #ec4899);
+            color: white;
+            text-decoration: none;
+            border-radius: 50px;
+            font-weight: 600;
             font-size: 0.9rem;
-            margin-top: 20px;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 20px rgba(124, 58, 237, 0.3);
+        }
+
+        .back-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 30px rgba(124, 58, 237, 0.5);
+        }
+
+        .footer {
+            color: #333;
+            font-size: 0.8rem;
+            margin-top: 30px;
         }
 
         .particles {
@@ -125,86 +218,98 @@
             width: 100%;
             height: 100%;
             pointer-events: none;
-            z-index: -1;
+            z-index: 1;
         }
 
         .particle {
             position: absolute;
-            width: 4px;
-            height: 4px;
-            background: rgba(102, 126, 234, 0.3);
             border-radius: 50%;
-            animation: float 15s infinite;
+            animation: rise 20s infinite;
+            opacity: 0;
         }
 
-        @keyframes float {
-            0%, 100% {
-                transform: translateY(100vh) rotate(0deg);
-                opacity: 0;
-            }
-            10% {
-                opacity: 1;
-            }
-            90% {
-                opacity: 0.5;
-            }
-            100% {
-                transform: translateY(-100vh) rotate(720deg);
-                opacity: 0;
-            }
+        @keyframes rise {
+            0% { transform: translateY(100vh) scale(0); opacity: 0; }
+            10% { opacity: 1; }
+            90% { opacity: 0.3; }
+            100% { transform: translateY(-100vh) scale(1); opacity: 0; }
+        }
+
+        @media (max-width: 600px) {
+            h1 { font-size: 2rem; }
+            .subtitle { font-size: 1rem; }
+            .emoji-container { font-size: 70px; }
+            .roast { padding: 20px; }
         }
     </style>
 </head>
 <body>
+    <div class="bg-gradient"></div>
+    <div class="grid-overlay"></div>
     <div class="particles" id="particles"></div>
 
     <div class="container">
-        <div class="gears">
-            <div class="gear">
-                <svg viewBox="0 0 100 100">
-                    <path d="M97.6,55.7V44.3l-13.6-2.9c-0.8-3.3-2.1-6.4-3.7-9.3l7.8-11.2l-8.1-8.1L68.8,20.6c-2.9-1.6-6-2.9-9.3-3.7L56.6,3.3H44.3 l-2.9,13.6c-3.3,0.8-6.4,2.1-9.3,3.7L20.9,12.8l-8.1,8.1l7.8,11.2c-1.6,2.9-2.9,6-3.7,9.3L3.3,44.3v11.4l13.6,2.9 c0.8,3.3,2.1,6.4,3.7,9.3l-7.8,11.2l8.1,8.1l11.2-7.8c2.9,1.6,6,2.9,9.3,3.7l2.9,13.6h11.4l2.9-13.6c3.3-0.8,6.4-2.1,9.3-3.7 l11.2,7.8l8.1-8.1l-7.8-11.2c1.6-2.9,2.9-6,3.7-9.3L97.6,55.7z M50,65c-8.3,0-15-6.7-15-15c0-8.3,6.7-15,15-15s15,6.7,15,15 C65,58.3,58.3,65,50,65z"/>
-                </svg>
-            </div>
-            <div class="gear">
-                <svg viewBox="0 0 100 100">
-                    <path d="M97.6,55.7V44.3l-13.6-2.9c-0.8-3.3-2.1-6.4-3.7-9.3l7.8-11.2l-8.1-8.1L68.8,20.6c-2.9-1.6-6-2.9-9.3-3.7L56.6,3.3H44.3 l-2.9,13.6c-3.3,0.8-6.4,2.1-9.3,3.7L20.9,12.8l-8.1,8.1l7.8,11.2c-1.6,2.9-2.9,6-3.7,9.3L3.3,44.3v11.4l13.6,2.9 c0.8,3.3,2.1,6.4,3.7,9.3l-7.8,11.2l8.1,8.1l11.2-7.8c2.9,1.6,6,2.9,9.3,3.7l2.9,13.6h11.4l2.9-13.6c3.3-0.8,6.4-2.1,9.3-3.7 l11.2,7.8l8.1-8.1l-7.8-11.2c1.6-2.9,2.9-6,3.7-9.3L97.6,55.7z M50,65c-8.3,0-15-6.7-15-15c0-8.3,6.7-15,15-15s15,6.7,15,15 C65,58.3,58.3,65,50,65z"/>
-                </svg>
-            </div>
+        <div class="emoji-container">🕵️</div>
+
+        <h1>Nice Try, Buddy.</h1>
+        <p class="subtitle">That page doesn't exist... and neither does your luck today 😂</p>
+
+        <div class="status-bar">
+            <div class="status-dot"></div>
+            <span class="status-text">404 — Page Not Found</span>
         </div>
 
-        <h1>Sedang Maintenance</h1>
+        <div class="roast">
+            <p>
+                You really thought typing <span class="red">random stuff</span> in the URL would work? 
+                <br>Bold move. Respect. But no. 😤
+                <br><br>
+                The entire site is <span class="highlight">under maintenance</span> right now.
+                <br>Every. Single. Page. <span class="sassy">Yes, even that one.</span>
+                <br><br>
+                No secret pages. No hidden content. No easter eggs.
+                <br><span style="color: #555; font-size: 0.85rem;">(okay maybe one easter egg... but you won't find it 🥚)</span>
+            </p>
+        </div>
 
-        <p>
-            Website kami sedang dalam perbaikan untuk memberikan pengalaman yang lebih baik.
-            <br>Kami akan segera kembali!
-        </p>
+        <div class="url-display">
+            <code id="current-url"></code>
+        </div>
 
         <div class="progress-bar">
             <div class="progress-fill"></div>
         </div>
 
-        <p style="font-size: 0.95rem;">
-            Sedang bekerja keras
-            <span class="dots">
-                <span>.</span><span>.</span><span>.</span>
-            </span>
-        </p>
+        <a href="/" class="back-btn">← Go Back to Waiting</a>
 
-        <div class="countdown">
-            Terima kasih atas kesabaran Anda
+        <div class="footer">
+            <p>Pro tip: Refreshing won't help. But hey, you do you. 🫡</p>
         </div>
     </div>
 
     <script>
+        // Show the current URL they tried
+        document.getElementById('current-url').textContent = '> ' + window.location.pathname + ' — lol nope';
+
+        // Floating particles
         const particlesContainer = document.getElementById('particles');
-        for (let i = 0; i < 20; i++) {
+        const colors = ['rgba(239, 68, 68, 0.3)', 'rgba(124, 58, 237, 0.3)', 'rgba(251, 191, 36, 0.2)'];
+
+        for (let i = 0; i < 25; i++) {
             const particle = document.createElement('div');
             particle.classList.add('particle');
             particle.style.left = Math.random() * 100 + '%';
-            particle.style.animationDelay = Math.random() * 15 + 's';
-            particle.style.animationDuration = (Math.random() * 10 + 10) + 's';
+            particle.style.width = (Math.random() * 4 + 2) + 'px';
+            particle.style.height = particle.style.width;
+            particle.style.background = colors[Math.floor(Math.random() * colors.length)];
+            particle.style.animationDelay = Math.random() * 20 + 's';
+            particle.style.animationDuration = (Math.random() * 15 + 10) + 's';
             particlesContainer.appendChild(particle);
         }
+
+        // Console easter egg
+        console.log('%c🥚 You found the easter egg!', 'font-size: 20px; color: #fbbf24;');
+        console.log('%cJust kidding. Go away. Site is under maintenance. 😂', 'font-size: 14px; color: #ef4444;');
     </script>
 </body>
 </html>
