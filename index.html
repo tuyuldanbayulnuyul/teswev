@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Under Maintenance | We'll Be Back</title>
+    <title>We'll Be Right Back | Maintenance</title>
     <style>
         * {
             margin: 0;
@@ -22,7 +22,6 @@
             position: relative;
         }
 
-        /* Animated gradient background */
         .bg-gradient {
             position: fixed;
             top: 0;
@@ -40,7 +39,6 @@
             100% { transform: scale(1.1) rotate(2deg); }
         }
 
-        /* Grid overlay */
         .grid-overlay {
             position: fixed;
             top: 0;
@@ -48,8 +46,8 @@
             width: 100%;
             height: 100%;
             background-image: 
-                linear-gradient(rgba(255,255,255,0.02) 1px, transparent 1px),
-                linear-gradient(90deg, rgba(255,255,255,0.02) 1px, transparent 1px);
+                linear-gradient(rgba(255,255,255,0.015) 1px, transparent 1px),
+                linear-gradient(90deg, rgba(255,255,255,0.015) 1px, transparent 1px);
             background-size: 60px 60px;
             pointer-events: none;
         }
@@ -57,121 +55,113 @@
         .container {
             text-align: center;
             padding: 40px;
-            max-width: 700px;
+            max-width: 650px;
             width: 90%;
             position: relative;
             z-index: 10;
         }
 
-        /* Glitch effect for the emoji */
-        .emoji-container {
-            font-size: 100px;
-            margin-bottom: 20px;
-            position: relative;
+        .icon {
+            font-size: 90px;
+            margin-bottom: 25px;
             display: inline-block;
             animation: float 3s ease-in-out infinite;
         }
 
         @keyframes float {
             0%, 100% { transform: translateY(0px); }
-            50% { transform: translateY(-15px); }
+            50% { transform: translateY(-12px); }
         }
 
-        /* Glowing title */
         h1 {
             color: #ffffff;
-            font-size: 3rem;
-            margin-bottom: 10px;
+            font-size: 2.8rem;
+            margin-bottom: 12px;
             font-weight: 800;
             letter-spacing: -1px;
-            text-shadow: 0 0 40px rgba(120, 0, 255, 0.5);
+            position: relative;
+        }
+
+        h1::after {
+            content: '';
+            display: block;
+            width: 60px;
+            height: 4px;
+            background: linear-gradient(90deg, #7c3aed, #ff6b9d);
+            margin: 15px auto 0;
+            border-radius: 2px;
         }
 
         .subtitle {
             color: #ff6b9d;
-            font-size: 1.3rem;
-            font-weight: 600;
-            margin-bottom: 30px;
-            font-style: italic;
+            font-size: 1.1rem;
+            font-weight: 500;
+            margin-top: 20px;
+            margin-bottom: 35px;
         }
 
-        .roast {
+        .card {
             background: rgba(255, 255, 255, 0.03);
-            border: 1px solid rgba(255, 255, 255, 0.08);
+            border: 1px solid rgba(255, 255, 255, 0.07);
             border-radius: 16px;
-            padding: 25px 30px;
+            padding: 30px;
             margin-bottom: 35px;
             backdrop-filter: blur(10px);
         }
 
-        .roast p {
-            color: #a0a0b8;
+        .card p {
+            color: #9a9ab0;
             font-size: 1.05rem;
             line-height: 1.9;
         }
 
-        .roast .highlight {
+        .card .highlight {
             color: #c084fc;
             font-weight: 600;
         }
 
-        .roast .sassy {
+        .card .accent {
             color: #ff6b9d;
             font-weight: 600;
         }
 
-        /* Animated status bar */
         .status-bar {
             display: flex;
             align-items: center;
             justify-content: center;
-            gap: 12px;
-            margin-bottom: 35px;
+            gap: 10px;
+            margin-bottom: 30px;
         }
 
         .status-dot {
-            width: 10px;
-            height: 10px;
-            background: #ff6b9d;
+            width: 9px;
+            height: 9px;
+            background: #fbbf24;
             border-radius: 50%;
             animation: pulse 1.5s ease-in-out infinite;
-            box-shadow: 0 0 15px rgba(255, 107, 157, 0.6);
+            box-shadow: 0 0 12px rgba(251, 191, 36, 0.6);
         }
 
         @keyframes pulse {
             0%, 100% { opacity: 1; transform: scale(1); }
-            50% { opacity: 0.5; transform: scale(0.8); }
+            50% { opacity: 0.5; transform: scale(0.75); }
         }
 
         .status-text {
-            color: #ff6b9d;
-            font-size: 0.85rem;
+            color: #fbbf24;
+            font-size: 0.8rem;
             text-transform: uppercase;
             letter-spacing: 3px;
             font-weight: 600;
         }
 
-        /* Progress section */
-        .progress-container {
-            margin-bottom: 35px;
-        }
-
-        .progress-label {
-            display: flex;
-            justify-content: space-between;
-            margin-bottom: 8px;
-            color: #666;
-            font-size: 0.8rem;
-            text-transform: uppercase;
-            letter-spacing: 1px;
-        }
-
         .progress-bar {
             width: 100%;
-            height: 4px;
+            height: 3px;
             background: rgba(255,255,255,0.05);
             border-radius: 2px;
             overflow: hidden;
+            margin-bottom: 35px;
         }
 
         .progress-fill {
@@ -188,42 +178,27 @@
             100% { background-position: 200% 0; }
         }
 
-        /* Fun quotes rotation */
         .quotes {
-            margin-bottom: 30px;
-            min-height: 60px;
+            min-height: 50px;
             display: flex;
             align-items: center;
             justify-content: center;
+            margin-bottom: 25px;
         }
 
         .quote {
             color: #555;
-            font-size: 0.9rem;
+            font-size: 0.88rem;
             font-style: italic;
-            opacity: 0;
-            position: absolute;
             transition: opacity 0.5s ease;
         }
 
-        .quote.active {
-            opacity: 1;
-            position: relative;
-        }
-
-        /* Footer sass */
         .footer {
             color: #333;
-            font-size: 0.8rem;
-            margin-top: 20px;
+            font-size: 0.75rem;
+            letter-spacing: 0.5px;
         }
 
-        .footer a {
-            color: #7c3aed;
-            text-decoration: none;
-        }
-
-        /* Floating particles */
         .particles {
             position: fixed;
             top: 0;
@@ -242,71 +217,17 @@
         }
 
         @keyframes rise {
-            0% {
-                transform: translateY(100vh) scale(0);
-                opacity: 0;
-            }
-            10% {
-                opacity: 1;
-            }
-            90% {
-                opacity: 0.3;
-            }
-            100% {
-                transform: translateY(-100vh) scale(1);
-                opacity: 0;
-            }
+            0% { transform: translateY(100vh) scale(0); opacity: 0; }
+            10% { opacity: 0.8; }
+            90% { opacity: 0.2; }
+            100% { transform: translateY(-100vh) scale(1); opacity: 0; }
         }
 
-        /* Glitch text effect */
-        .glitch {
-            position: relative;
-        }
-
-        .glitch::before,
-        .glitch::after {
-            content: attr(data-text);
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-        }
-
-        .glitch::before {
-            animation: glitch-1 2s infinite linear alternate-reverse;
-            clip-path: polygon(0 0, 100% 0, 100% 35%, 0 35%);
-            color: #ff6b9d;
-        }
-
-        .glitch::after {
-            animation: glitch-2 2s infinite linear alternate-reverse;
-            clip-path: polygon(0 65%, 100% 65%, 100% 100%, 0 100%);
-            color: #00d4ff;
-        }
-
-        @keyframes glitch-1 {
-            0%, 100% { transform: translateX(0); }
-            20% { transform: translateX(-2px); }
-            40% { transform: translateX(2px); }
-            60% { transform: translateX(-1px); }
-            80% { transform: translateX(1px); }
-        }
-
-        @keyframes glitch-2 {
-            0%, 100% { transform: translateX(0); }
-            20% { transform: translateX(2px); }
-            40% { transform: translateX(-2px); }
-            60% { transform: translateX(1px); }
-            80% { transform: translateX(-1px); }
-        }
-
-        /* Responsive */
         @media (max-width: 600px) {
             h1 { font-size: 2rem; }
-            .subtitle { font-size: 1rem; }
-            .emoji-container { font-size: 70px; }
-            .roast { padding: 20px; }
+            .icon { font-size: 65px; }
+            .card { padding: 20px; }
+            .subtitle { font-size: 0.95rem; }
         }
     </style>
 </head>
@@ -316,51 +237,43 @@
     <div class="particles" id="particles"></div>
 
     <div class="container">
-        <div class="emoji-container">🚧</div>
+        <div class="icon">⚙️</div>
 
-        <h1 class="glitch" data-text="We're Down.">We're Down.</h1>
-        <p class="subtitle">...but at least we warned you, right? 😏</p>
+        <h1>Under Maintenance</h1>
+        <p class="subtitle">Hang tight — we're making things better for you.</p>
 
         <div class="status-bar">
             <div class="status-dot"></div>
-            <span class="status-text">System Offline</span>
+            <span class="status-text">Scheduled Maintenance</span>
         </div>
 
-        <div class="roast">
+        <div class="card">
             <p>
-                Look, we know you were <span class="highlight">super excited</span> to visit this page.
-                <br>But our hamsters powering the server needed a <span class="sassy">coffee break</span>. ☕
+                Our team is currently performing <span class="highlight">scheduled upgrades</span> to improve performance and security.
                 <br><br>
-                We're upgrading things behind the scenes.
-                <br>Try again later — or don't. <span class="highlight">We'll be here either way.</span> 💅
+                We'll be back online shortly. Thanks for your patience — <span class="accent">we appreciate you!</span>
             </p>
         </div>
 
-        <div class="progress-container">
-            <div class="progress-label">
-                <span>Progress</span>
-                <span>Loading vibes...</span>
-            </div>
-            <div class="progress-bar">
-                <div class="progress-fill"></div>
-            </div>
+        <div class="progress-bar">
+            <div class="progress-fill"></div>
         </div>
 
         <div class="quotes">
-            <p class="quote active" id="quote">Loading witty comeback...</p>
+            <p class="quote" id="quote">"Good things take time."</p>
         </div>
 
         <div class="footer">
-            <p>In the meantime, maybe go touch some grass? 🌱</p>
+            <p>cloudglobalserver.com</p>
         </div>
     </div>
 
     <script>
-        // Floating particles
+        // Particles
         const particlesContainer = document.getElementById('particles');
-        const colors = ['rgba(124, 58, 237, 0.4)', 'rgba(255, 107, 157, 0.3)', 'rgba(0, 212, 255, 0.2)'];
+        const colors = ['rgba(124, 58, 237, 0.35)', 'rgba(255, 107, 157, 0.25)', 'rgba(0, 212, 255, 0.2)'];
 
-        for (let i = 0; i < 30; i++) {
+        for (let i = 0; i < 25; i++) {
             const particle = document.createElement('div');
             particle.classList.add('particle');
             particle.style.left = Math.random() * 100 + '%';
@@ -372,29 +285,25 @@
             particlesContainer.appendChild(particle);
         }
 
-        // Rotating sassy quotes
+        // Rotating quotes
         const quotes = [
-            "\"Have you tried turning it off and on again?\" — Every IT guy ever 🙄",
-            "Error 503: Server went to grab boba. BRB. 🧋",
-            "Our developers are fixing bugs... or creating new ones. Who knows? 🤷",
-            "This page is more unavailable than your crush. 💔",
-            "We're not broken, we're just ✨under construction✨",
-            "Plot twist: the maintenance IS the content. 🎭",
-            "If you refresh 100 times, nothing will change. Trust us. 😂",
-            "Our server said 'I need a mental health day.' We respect that. 🧘",
-            "You could've spent this time learning to code... just saying. 👀",
-            "Roses are red, servers are blue, this site is down, nothing you can do. 🌹"
+            "\"Good things take time.\"",
+            "\"We're upgrading the experience.\"",
+            "\"Almost there... stay tuned.\"",
+            "\"Building something awesome for you.\"",
+            "\"Quality takes effort — we're on it.\"",
+            "\"Back soon, better than ever.\"",
         ];
 
         let currentQuote = 0;
         const quoteEl = document.getElementById('quote');
 
         setInterval(() => {
-            quoteEl.classList.remove('active');
+            quoteEl.style.opacity = '0';
             setTimeout(() => {
                 currentQuote = (currentQuote + 1) % quotes.length;
                 quoteEl.textContent = quotes[currentQuote];
-                quoteEl.classList.add('active');
+                quoteEl.style.opacity = '1';
             }, 500);
         }, 4000);
     </script>

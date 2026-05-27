@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Nice Try 😏 | Under Maintenance</title>
+    <title>We'll Be Right Back | Maintenance</title>
     <style>
         * {
             margin: 0;
@@ -28,15 +28,15 @@
             left: 0;
             width: 100%;
             height: 100%;
-            background: radial-gradient(ellipse at 20% 50%, rgba(255, 0, 80, 0.12) 0%, transparent 50%),
-                        radial-gradient(ellipse at 80% 20%, rgba(120, 0, 255, 0.1) 0%, transparent 50%),
-                        radial-gradient(ellipse at 50% 80%, rgba(255, 200, 0, 0.06) 0%, transparent 50%);
+            background: radial-gradient(ellipse at 20% 50%, rgba(120, 0, 255, 0.15) 0%, transparent 50%),
+                        radial-gradient(ellipse at 80% 20%, rgba(255, 0, 128, 0.1) 0%, transparent 50%),
+                        radial-gradient(ellipse at 50% 80%, rgba(0, 200, 255, 0.08) 0%, transparent 50%);
             animation: bgShift 8s ease-in-out infinite alternate;
         }
 
         @keyframes bgShift {
             0% { transform: scale(1) rotate(0deg); }
-            100% { transform: scale(1.1) rotate(-2deg); }
+            100% { transform: scale(1.1) rotate(2deg); }
         }
 
         .grid-overlay {
@@ -46,8 +46,8 @@
             width: 100%;
             height: 100%;
             background-image: 
-                linear-gradient(rgba(255,255,255,0.02) 1px, transparent 1px),
-                linear-gradient(90deg, rgba(255,255,255,0.02) 1px, transparent 1px);
+                linear-gradient(rgba(255,255,255,0.015) 1px, transparent 1px),
+                linear-gradient(90deg, rgba(255,255,255,0.015) 1px, transparent 1px);
             background-size: 60px 60px;
             pointer-events: none;
         }
@@ -55,118 +55,109 @@
         .container {
             text-align: center;
             padding: 40px;
-            max-width: 700px;
+            max-width: 650px;
             width: 90%;
             position: relative;
             z-index: 10;
         }
 
-        .emoji-container {
-            font-size: 100px;
-            margin-bottom: 20px;
+        .icon {
+            font-size: 90px;
+            margin-bottom: 25px;
             display: inline-block;
-            animation: shake 0.5s ease-in-out infinite alternate;
+            animation: float 3s ease-in-out infinite;
         }
 
-        @keyframes shake {
-            0% { transform: rotate(-5deg); }
-            100% { transform: rotate(5deg); }
+        @keyframes float {
+            0%, 100% { transform: translateY(0px); }
+            50% { transform: translateY(-12px); }
         }
 
         h1 {
             color: #ffffff;
-            font-size: 3rem;
-            margin-bottom: 10px;
+            font-size: 2.8rem;
+            margin-bottom: 12px;
             font-weight: 800;
             letter-spacing: -1px;
-            text-shadow: 0 0 40px rgba(255, 0, 80, 0.5);
+            position: relative;
+        }
+
+        h1::after {
+            content: '';
+            display: block;
+            width: 60px;
+            height: 4px;
+            background: linear-gradient(90deg, #7c3aed, #ff6b9d);
+            margin: 15px auto 0;
+            border-radius: 2px;
         }
 
         .subtitle {
-            color: #fbbf24;
-            font-size: 1.3rem;
+            color: #ff6b9d;
+            font-size: 1.1rem;
+            font-weight: 500;
+            margin-top: 20px;
+            margin-bottom: 35px;
+        }
+
+        .card {
+            background: rgba(255, 255, 255, 0.03);
+            border: 1px solid rgba(255, 255, 255, 0.07);
+            border-radius: 16px;
+            padding: 30px;
+            margin-bottom: 35px;
+            backdrop-filter: blur(10px);
+        }
+
+        .card p {
+            color: #9a9ab0;
+            font-size: 1.05rem;
+            line-height: 1.9;
+        }
+
+        .card .highlight {
+            color: #c084fc;
             font-weight: 600;
-            margin-bottom: 30px;
+        }
+
+        .card .accent {
+            color: #ff6b9d;
+            font-weight: 600;
         }
 
         .status-bar {
             display: flex;
             align-items: center;
             justify-content: center;
-            gap: 12px;
-            margin-bottom: 35px;
+            gap: 10px;
+            margin-bottom: 30px;
         }
 
         .status-dot {
-            width: 10px;
-            height: 10px;
-            background: #ef4444;
+            width: 9px;
+            height: 9px;
+            background: #fbbf24;
             border-radius: 50%;
-            animation: pulse 1s ease-in-out infinite;
-            box-shadow: 0 0 15px rgba(239, 68, 68, 0.6);
+            animation: pulse 1.5s ease-in-out infinite;
+            box-shadow: 0 0 12px rgba(251, 191, 36, 0.6);
         }
 
         @keyframes pulse {
             0%, 100% { opacity: 1; transform: scale(1); }
-            50% { opacity: 0.4; transform: scale(0.7); }
+            50% { opacity: 0.5; transform: scale(0.75); }
         }
 
         .status-text {
-            color: #ef4444;
-            font-size: 0.85rem;
+            color: #fbbf24;
+            font-size: 0.8rem;
             text-transform: uppercase;
             letter-spacing: 3px;
             font-weight: 600;
         }
 
-        .roast {
-            background: rgba(255, 255, 255, 0.03);
-            border: 1px solid rgba(255, 255, 255, 0.08);
-            border-radius: 16px;
-            padding: 25px 30px;
-            margin-bottom: 35px;
-            backdrop-filter: blur(10px);
-        }
-
-        .roast p {
-            color: #a0a0b8;
-            font-size: 1.05rem;
-            line-height: 1.9;
-        }
-
-        .roast .highlight {
-            color: #c084fc;
-            font-weight: 600;
-        }
-
-        .roast .sassy {
-            color: #fbbf24;
-            font-weight: 600;
-        }
-
-        .roast .red {
-            color: #ef4444;
-            font-weight: 600;
-        }
-
-        .url-display {
-            background: rgba(255, 255, 255, 0.05);
-            border: 1px solid rgba(255, 255, 255, 0.1);
-            border-radius: 8px;
-            padding: 12px 20px;
-            margin: 20px 0;
-            display: inline-block;
-        }
-
-        .url-display code {
-            color: #ef4444;
-            font-family: 'Courier New', monospace;
-            font-size: 0.95rem;
-        }
-
         .progress-bar {
             width: 100%;
-            height: 4px;
+            height: 3px;
             background: rgba(255,255,255,0.05);
             border-radius: 2px;
             overflow: hidden;
@@ -176,10 +167,10 @@
         .progress-fill {
             height: 100%;
             width: 100%;
-            background: linear-gradient(90deg, #ef4444, #fbbf24, #ef4444);
+            background: linear-gradient(90deg, #7c3aed, #ff6b9d, #7c3aed);
             background-size: 200% 100%;
             border-radius: 2px;
-            animation: shimmer 1.5s linear infinite;
+            animation: shimmer 2s linear infinite;
         }
 
         @keyframes shimmer {
@@ -187,28 +178,25 @@
             100% { background-position: 200% 0; }
         }
 
-        .back-btn {
-            display: inline-block;
-            padding: 12px 30px;
-            background: linear-gradient(135deg, #7c3aed, #ec4899);
-            color: white;
-            text-decoration: none;
-            border-radius: 50px;
-            font-weight: 600;
-            font-size: 0.9rem;
-            transition: all 0.3s ease;
-            box-shadow: 0 4px 20px rgba(124, 58, 237, 0.3);
+        .quotes {
+            min-height: 50px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 25px;
         }
 
-        .back-btn:hover {
-            transform: translateY(-2px);
-            box-shadow: 0 6px 30px rgba(124, 58, 237, 0.5);
+        .quote {
+            color: #555;
+            font-size: 0.88rem;
+            font-style: italic;
+            transition: opacity 0.5s ease;
         }
 
         .footer {
             color: #333;
-            font-size: 0.8rem;
-            margin-top: 30px;
+            font-size: 0.75rem;
+            letter-spacing: 0.5px;
         }
 
         .particles {
@@ -230,16 +218,16 @@
 
         @keyframes rise {
             0% { transform: translateY(100vh) scale(0); opacity: 0; }
-            10% { opacity: 1; }
-            90% { opacity: 0.3; }
+            10% { opacity: 0.8; }
+            90% { opacity: 0.2; }
             100% { transform: translateY(-100vh) scale(1); opacity: 0; }
         }
 
         @media (max-width: 600px) {
             h1 { font-size: 2rem; }
-            .subtitle { font-size: 1rem; }
-            .emoji-container { font-size: 70px; }
-            .roast { padding: 20px; }
+            .icon { font-size: 65px; }
+            .card { padding: 20px; }
+            .subtitle { font-size: 0.95rem; }
         }
     </style>
 </head>
@@ -249,51 +237,41 @@
     <div class="particles" id="particles"></div>
 
     <div class="container">
-        <div class="emoji-container">🕵️</div>
+        <div class="icon">⚙️</div>
 
-        <h1>Nice Try, Buddy.</h1>
-        <p class="subtitle">That page doesn't exist... and neither does your luck today 😂</p>
+        <h1>Under Maintenance</h1>
+        <p class="subtitle">Hang tight — we're making things better for you.</p>
 
         <div class="status-bar">
             <div class="status-dot"></div>
-            <span class="status-text">404 — Page Not Found</span>
+            <span class="status-text">Scheduled Maintenance</span>
         </div>
 
-        <div class="roast">
+        <div class="card">
             <p>
-                You really thought typing <span class="red">random stuff</span> in the URL would work? 
-                <br>Bold move. Respect. But no. 😤
+                Our team is currently performing <span class="highlight">scheduled upgrades</span> to improve performance and security.
                 <br><br>
-                The entire site is <span class="highlight">under maintenance</span> right now.
-                <br>Every. Single. Page. <span class="sassy">Yes, even that one.</span>
-                <br><br>
-                No secret pages. No hidden content. No easter eggs.
-                <br><span style="color: #555; font-size: 0.85rem;">(okay maybe one easter egg... but you won't find it 🥚)</span>
+                We'll be back online shortly. Thanks for your patience — <span class="accent">we appreciate you!</span>
             </p>
-        </div>
-
-        <div class="url-display">
-            <code id="current-url"></code>
         </div>
 
         <div class="progress-bar">
             <div class="progress-fill"></div>
         </div>
 
-        <a href="/" class="back-btn">← Go Back to Waiting</a>
+        <div class="quotes">
+            <p class="quote" id="quote">"Good things take time."</p>
+        </div>
 
         <div class="footer">
-            <p>Pro tip: Refreshing won't help. But hey, you do you. 🫡</p>
+            <p>cloudglobalserver.com</p>
         </div>
     </div>
 
     <script>
-        // Show the current URL they tried
-        document.getElementById('current-url').textContent = '> ' + window.location.pathname + ' — lol nope';
-
-        // Floating particles
+        // Particles
         const particlesContainer = document.getElementById('particles');
-        const colors = ['rgba(239, 68, 68, 0.3)', 'rgba(124, 58, 237, 0.3)', 'rgba(251, 191, 36, 0.2)'];
+        const colors = ['rgba(124, 58, 237, 0.35)', 'rgba(255, 107, 157, 0.25)', 'rgba(0, 212, 255, 0.2)'];
 
         for (let i = 0; i < 25; i++) {
             const particle = document.createElement('div');
@@ -307,9 +285,27 @@
             particlesContainer.appendChild(particle);
         }
 
-        // Console easter egg
-        console.log('%c🥚 You found the easter egg!', 'font-size: 20px; color: #fbbf24;');
-        console.log('%cJust kidding. Go away. Site is under maintenance. 😂', 'font-size: 14px; color: #ef4444;');
+        // Rotating quotes
+        const quotes = [
+            "\"Good things take time.\"",
+            "\"We're upgrading the experience.\"",
+            "\"Almost there... stay tuned.\"",
+            "\"Building something awesome for you.\"",
+            "\"Quality takes effort — we're on it.\"",
+            "\"Back soon, better than ever.\"",
+        ];
+
+        let currentQuote = 0;
+        const quoteEl = document.getElementById('quote');
+
+        setInterval(() => {
+            quoteEl.style.opacity = '0';
+            setTimeout(() => {
+                currentQuote = (currentQuote + 1) % quotes.length;
+                quoteEl.textContent = quotes[currentQuote];
+                quoteEl.style.opacity = '1';
+            }, 500);
+        }, 4000);
     </script>
 </body>
 </html>
